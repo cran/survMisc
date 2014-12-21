@@ -12,7 +12,7 @@ Miscellaneous functions for survival analysis.
 \tabular{ll}{
  Package: \tab survMisc\cr
  Type: \tab Package\cr
-  Version: \tab 0.4.4\cr
+  Version: \tab 0.4.5\cr
  Date: \tab 2014-12-21\cr
 License: \tab GPL (>= 2)\cr
 LazyLoad: \tab yes

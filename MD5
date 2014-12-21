@@ -1,5 +1,5 @@
-b86edf37a372aa16fe30a9d0896e8c95 *DESCRIPTION
-c91c3d67895ef12602c3bc2e49a96ee0 *NAMESPACE
+629a81691c98f3bb8572154c033ddb36 *DESCRIPTION
+d95a559e3558cb6cc010e0d8885e27b3 *NAMESPACE
 8cc3d31e1de54c1afdb9d14086e283f3 *R/air.R
 5c03dacf892cb06ed831907347ff03db *R/asSurv.R
 bb0aee26251c1a112e4fa7355e471156 *R/autoplotRpart.R
@@ -30,7 +30,7 @@ dc4034b606e77dac27797c01b9836f37 *R/plotTerm.R
 9eae1f10291bbd6673fe3f31b6ed4869 *R/rsq.R
 52fdffcfcb477f16fc9d4ed3a28152ed *R/sf.R
 50cda9d39e00220ecc782cb124084365 *R/sig.R
-9f5e7c998210c5e9fb5ecd3c9601a4c7 *R/survMisc_package.R
+ad0bd793d93d594b1e1cec35eeb36fa3 *R/survMisc_package.R
 d2743a91683bcf947f925d0637a6ec60 *R/tableRhs.R
 e7916da9489d28131fd63f7e4ca1d98f *R/tne.R
 ffee10d8b5f8053f78d78ba7aca1a0a5 *R/tneBMT.R
@@ -66,7 +66,7 @@ c643b013ac6e2ee6c8db98700ca3e4ff *man/comp.Rd
 4fa15c8f29bbe6f26f76831c38bfd0b2 *man/gamTerms.Rd
 8d3f6df72f87bd8cd0475303558e0b28 *man/gastric.Rd
 791c8c4b0a4c4e3abb96fdc1bf83c992 *man/genSurv.Rd
-acd814b2623066ef6498457ca027e346 *man/gof.Rd
+0a7ffe3fb8c44678f5c6a0cfb4b724e3 *man/gof.Rd
 19c67876bf367988c98eb0c11359a11f *man/ic.Rd
 9c01b76f73812e9246575032e0005fa3 *man/local.Rd
 070defeb3646c1ddea62632488e87a0b *man/lrSS.Rd
@@ -81,7 +81,7 @@ da405ed151d8d8bf8c0d86edd5779da0 *man/plotTerm.Rd
 38169b97ce3ba984bae13bbb60881960 *man/rsq.Rd
 0c4135ad8f7a9b4d5948d9576f488182 *man/sf.Rd
 a6be91ca2e0b8653c1159125db14631a *man/sig.Rd
-5d36f78c24c66d3325cd489ff1537892 *man/survMisc-package.Rd
+aa7ffa3257f131da9698feaedfdde22d *man/survMisc-package.Rd
 da48c3e9ae0dd5fcf3f906e51db9c4bb *man/tableRhs.Rd
 9d3661c09258680a19d5251f0ec614d2 *man/tne.Rd
 997e855771d672efa1d2117b512eae26 *man/tneBMT.Rd
