@@ -8,18 +8,15 @@
 ##' @description Uses \code{ggplot2} to render a table showing the number of subjects
 ##' at risk per time period and survival curves (Kaplan-Meier plot) and to render
 ##' 
-##' @keywords plot
-##' @keywords survival
-##' 
-##' @param object An object of class \code{survfit}.
-##' @param ... Additional arguments (not implemented).
-##' @param xLab Label for \eqn{x} axis on survival plot.
-##' @param yLab Label for \eqn{y} axis on survival plot.
-##' @param title Title for survival plot.
-##' @param titleSize Title size for survival plot.
-##' @param  axisTitleSize Title size for axes.
-##' @param  axisLabSize Title size for label axes.
-##' @param survLineSize Survival line size.
+##' @param object An object of class \code{survfit}
+##' @param ... Additional arguments (not implemented)
+##' @param xLab Label for \eqn{x} axis on survival plot
+##' @param yLab Label for \eqn{y} axis on survival plot
+##' @param title Title for survival plot
+##' @param titleSize Title size for survival plot
+##' @param  axisTitleSize Title size for axes
+##' @param  axisLabSize Title size for label axes
+##' @param survLineSize Survival line size
 ##' @param type Type of plot. The default, \code{type="single"}, plots single lines.
 ##'  \itemize{
 ##'  \item If \code{type="CI"} will add lines indicating
@@ -46,37 +43,35 @@
 ##'   \item If \code{jitter="all"} add some vertical noise to all survival lines.
 ##' }
 ##' @param legend If \code{legend=FALSE}, no legends will be produced
-##' for the plot or table.
+##' for the plot or table
 ##' @param legLabs These can be used to replace the names
-##' of the strata from the fit.
-##' \cr
-##' Should be given in the same order as those strata.
-##' @param legTitle Title for legend.
-##' @param legTitleSize Title size for legend.
-##' @param legLabSize Legend labels width and height.
-##' @param alpha Alpha, the transparency of lines indicating confidence intervals
-##' or filled rectangles. Should be in the range \eqn{0} to \eqn{1}.
+##' of the strata from the fit. Should be given in the same
+##' order as those strata
+##' @param legTitle Title for legend
+##' @param legTitleSize Title size for legend
+##' @param legLabSize Legend labels width and height
+##' @param alpha Alpha, transparency of lines indicating confidence intervals
+##' or filled rectangles. Should be in range \eqn{0-1}.
 ##' \cr
 ##' Larger values e.g. \code{alpha=0.7} are recommended for confidence
-##' intervals.
+##' intervals
 ##' @param censShape Shape of marks to indicate censored onservations.
-##' \cr
-##' Default is \code{3} which gives vertical ticks.
-##' \cr
-##' Use \code{censShape=10} for circular marks.
-##' @param censSize Size of marks to indicate censored onservations.
-##' @param CIline Confidence interval line type.
-##' @param fillLineSize Line size surrouding filled boxes.
+##' \cr Default is \code{3} which gives vertical ticks.
+##' \cr Use \code{censShape=10} for circular marks.
+##' @param censSize Size of marks to indicate censored onservations
+##' @param CIline Confidence interval line type
+##' @param fillLineSize Line size surrouding filled boxes
 ##' @param pVal If \code{pVal=TRUE}, adds \eqn{p} value from
 ##' log-rank test to plot
 ##' @param sigP No. of significant digits to display in \eqn{p} value.
 ##' Typically \eqn{1} to \eqn{3}.
 ##' @param pX Location of \eqn{p} value on \eqn{x} axis.
 ##' \cr
-##' Should be in the range of \eqn{0} to \eqn{1}.
-##' The location is relative to the maximum observed time.
+##' Should be in the range of \eqn{0 - 1},
+##' where value is to be placed relative to the maximum observed
+##' time.
 ##' \cr
-##' E.g. \code{pX = 0.5} will place it half-way along the \eqn{x}-axis.
+##' E.g. \code{pX = 0.5} will place it half-way along \eqn{x}-axis
 ##' @param pY Location of \eqn{p} value on \eqn{y} axis.
 ##' \cr
 ##' Should be in the range of \eqn{0 - 1}, as above
@@ -87,10 +82,10 @@
 ##'         survival plot are are labelled on the plot and table.
 ##'   \item If \code{timeTicks="minor"}, minor axis marks are labelled instead.
 ##' }
-##' @param tabTitle Table title.
-##' @param tabTitleSize Table title text size.
-##' @param tabLabSize Table legend text size.
-##' @param nRiskSize Number at risk - text size.
+##' @param tabTitle Table title
+##' @param tabTitleSize Table title text size
+##' @param tabLabSize Table legend text size
+##' @param nRiskSize Number at risk - text size
 ##' 
 ##' @return A \code{list} of \code{ggplot} objects, with elements:
 ##' \item{plot}{the survial plot}
@@ -101,15 +96,15 @@
 ##' @author Chris Dardis. Based on existing work by
 ##' R. Saccilotto, Abhijit Dasgupta, Gil Tomas and Mark Cowley.
 ##' 
-##' @note \itemize{
-##'   \item The returned \code{list} contains standard \code{ggplot2} objects.
-##'         \cr
-##'         These can be modified further, as in the last example, which changes
-##'         to colors to a user-defined sequence.
-##'         \cr
-##'         The default color scheme has been chosen for ease of display and accessibility.
-##'   \item Size arguments are passed to \code{ggplot2}'s \code{x=element_text(size=)}.
-##' }
+##' @note The returned \code{list} contains standard \code{ggplot2} objects.
+##' These can be modified further, as in the last example, which changes
+##' to colors to a user-defined sequence. The default color scheme has been chosen
+##' for ease of display and accessibility.
+##' \cr \cr
+##' Size arguments are passed to \code{ggplot2}'s \code{x=element_text(size=)}.
+##'
+##' @keywords plot
+##' @keywords survival
 ##' 
 ##' @examples
 ##' data(kidney, package="KMsurv")
@@ -125,18 +120,20 @@
 ##' ### load all datasets from package:km.ci
 ##' d1 <- data(package="km.ci")$results[, "Item"]
 ##' data(list=d1, package="km.ci")
-##' s1 <- survfit(Surv(time, status) ~ 1, data=rectum.dat)
+##' (s1 <- survfit(Surv(time, status) ~ 1, data=rectum.dat))
 ##' ### change confidence intervals to log Equal-Precision confidence bands
-##' km.ci::km.ci(s1, method="logep")
+##' suppressWarnings(km.ci::km.ci(s1, method="logep"))
 ##' autoplot(s1, type="fill", legend=FALSE)$plot
 ##' ### 
-##' ### change to user-defined colors
+##' ### manually changing the output
 ##' ### 
 ##' s1 <- survfit(Surv(time, delta) ~ type, data=kidney)
 ##' g1 <- autoplot(s1, type="CI", alpha=0.8, survLineSize=2)$plot
-##' g1 + scale_colour_manual(values=c("red", "blue")) +
-##'     scale_fill_manual(values=c("red", "blue"))
-##' 
+##' ### change default colors
+##' g1 + ggplot2::scale_colour_manual(values=c("red", "blue")) +
+##'     ggplot2::scale_fill_manual(values=c("red", "blue"))
+##' ### change limits of y-axis
+##' g1 + ggplot2::scale_y_continuous(limits=c(0, 1))
 autoplot.survfit <- function(object, ...,
                              xLab="Time",
                              yLab="Survival",
@@ -209,8 +206,8 @@ autoplot.survfit <- function(object, ...,
                       st=as.factor(st1))
 ### make two rows for each stratum
 ### for time=0 to time=time of first event
-    dt2 <- data.table::rbindlist(list(dt1[, .SD[1, ], by=st],
-                                      dt1[, .SD[1, ], by=st]))
+    dt2 <- rbindlist(list(dt1[, .SD[1, ], by=st],
+                          dt1[, .SD[1, ], by=st]))
 ### set n.event and n.censored to zero
     dt2[, c("n.event", "n.censor") := list(0), by=st]
 ### set surv, upper and lower to one
@@ -219,7 +216,7 @@ autoplot.survfit <- function(object, ...,
     dt2[seq(length(unique(dt2$st))), "time" := (0L) ]
 ### reorder to allow binding
     setcolorder(dt2, names(dt1))
-    dt1 <- data.table::rbindlist(list(dt2, dt1))
+    dt1 <- rbindlist(list(dt2, dt1))
 ### 
 ### jitter
 ### 

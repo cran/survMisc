@@ -2,10 +2,10 @@
 \docType{data}
 \name{tneKidney}
 \alias{tneKidney}
-\title{Time, no. at risk, no. events for kidney}
+\title{Time, no. at risk, no. events for kidney data.}
 \format{A data frame with 16 rows and 7 columns}
 \source{
-Klein J, Moeschberger. Survival Analysis, 2nd edition. Springer 2003. Example 7.9, pg 224.
+\bold{K&M}. Example 7.9, pg 224.
 }
 \description{
 Data from Klein J and Moeschberger.

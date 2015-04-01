@@ -116,9 +116,6 @@ tne(Surv(time=t2, event=d3) ~ ., data=bmt, what="list", nameStrata=FALSE)
 }
 \references{
 Example using \code{kidney} data is from:
-Klein J, Moeschberger M 2003
-\emph{Survival Analysis}, 2nd edition.
-New York: Springer.
-Example 7.2, pg 210.
+\bold{K&M}. Example 7.2, pg 210.
 }
 

@@ -27,15 +27,12 @@
 ##' \cr
 ##' \code{\link{comp}}
 ##' 
-##' @source Klein J, Moeschberger 2003
-##' \emph{Survival Analysis}, 2nd edition.
-##' New York: Springer.
-##' Example 7.9, pg 224.
+##' @source \bold{K&M}. Example 7.9, pg 224.
 ##' @references Copelan EA, Biggs JC, Thompson JM, Crilley P, Szer J, Klein JP, Kapoor N,
-##' Avalos BR, Cunningham I, Atkinson K, et al 1991
+##' Avalos BR, Cunningham I, Atkinson K, et al 1991.
 ##' Treatment for acute myelocytic leukemia with allogeneic bone marrow transplantation
 ##' following preparation with BuCy2.
 ##' \emph{Blood}. \bold{78}(3):838-43.
-##' \href{http://bloodjournal.hematologylibrary.org/content/78/3/838.full.pdf}{Blood}
+##' \href{http://bloodjournal.hematologylibrary.org/content/78/3/838.full.pdf}{.pdf at Blood}
 ##'
 NULL

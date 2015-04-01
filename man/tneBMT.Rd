@@ -11,10 +11,7 @@ Generated from \code{data("bmt", package="KMsurv")}.
   \item Event (\code{bmt$d3}) is death or relapse.
 }
 
-Klein J, Moeschberger 2003
-\emph{Survival Analysis}, 2nd edition.
-New York: Springer.
-Example 7.9, pg 224.
+\bold{K&M}. Example 7.9, pg 224.
 }
 \description{
 Time, no. at risk, no. events for BMT data
@@ -37,11 +34,11 @@ Columns are:
 }
 \references{
 Copelan EA, Biggs JC, Thompson JM, Crilley P, Szer J, Klein JP, Kapoor N,
-Avalos BR, Cunningham I, Atkinson K, et al 1991
+Avalos BR, Cunningham I, Atkinson K, et al 1991.
 Treatment for acute myelocytic leukemia with allogeneic bone marrow transplantation
 following preparation with BuCy2.
 \emph{Blood}. \bold{78}(3):838-43.
-\href{http://bloodjournal.hematologylibrary.org/content/78/3/838.full.pdf}{Blood}
+\href{http://bloodjournal.hematologylibrary.org/content/78/3/838.full.pdf}{.pdf at Blood}
 }
 \seealso{
 \code{?KMsurv::bmt}

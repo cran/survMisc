@@ -16,10 +16,10 @@ quantile <- function(x, ...){
 ##' @param ... Additional arguments (not implemented).
 ##' @param q (for \code{quantile}) Vector of quantiles
 ##' (expressed as percentage). For the \code{median}, \code{q=50}.
-##' @param showCI Include confidence interval.
+##' @param CI Include confidence interval.
 ##' \cr
-##' Defaults are \code{showCI=TRUE} for \code{quantile} and
-##' \code{showCI=FALSE} for \code{median}.
+##' Defaults are \code{CI=TRUE} for \code{quantile} and
+##' \code{CI=FALSE} for \code{median}.
 ##' @param alpha Significance level \eqn{\alpha}{alpha}.
 ##' @param ci \bold{C}onfidence \bold{i}nterval.
 ##' \cr
@@ -29,7 +29,7 @@ quantile <- function(x, ...){
 ##' with columns:
 ##'   \item{q}{quantile}
 ##'   \item{t}{time}
-##' If \code{showCI = TRUE} then upper and lower confidence
+##' If \code{CI = TRUE} then upper and lower confidence
 ##' intervals, as per argument \code{ci}).
 ##'  \item{l}{lower confidence limit}
 ##'  \item{u}{upper confidence limit}
@@ -37,7 +37,7 @@ quantile <- function(x, ...){
 ##' A \code{data.table} with columns:
 ##'   \item{t}{time}
 ##'   \item{s}{stratum}
-##' If \code{showCI = TRUE} then a \code{list} of
+##' If \code{CI = TRUE} then a \code{list} of
 ##' \code{data.table}s, one per stratum, as above.
 ##'
 ##' @note If a time cannot be calculated, \code{NaN} is returned.
@@ -73,7 +73,7 @@ quantile <- function(x, ...){
 ##' @export
 quantile.Surv <- function(x, ...,
                           q=c(25, 50, 75),
-                          showCI=TRUE,
+                          CI=TRUE,
                           alpha=0.05,
                           ci=c("log", "lin", "asr")
                           ){
@@ -97,13 +97,13 @@ quantile.Surv <- function(x, ...,
                               lin = sapply(p1, .findLin, dt=dt1),
                               asr = sapply(p1, .findArc, dt=dt1),
                               ), drop=FALSE)
-    res1 <- data.table::data.table(q = q,
-                                   t = t1)
-    if(showCI){
+    res1 <- data.table(q = q,
+                       t = t1)
+    if(CI){
         res1[, l := .findMin(matZ=matZ1, z=z1, dt=dt1)]
         res1[, u := .findMax(matZ=matZ1, z=z1, dt=dt1)]
     }
-    data.table::setattr(res1, "ci", ci)
+    setattr(res1, "ci", ci)
     return(res1)
 }
 ##'
@@ -113,21 +113,21 @@ quantile.Surv <- function(x, ...,
 ##' @export
 ##' 
 ##' @examples
-##' s1 <- survfit(Surv(t2, d3)~ group, data=bmt)
+##' s1 <- survfit(Surv(t2, d3) ~ group, data=bmt)
 ##' quantile(s1)
 ##' 
 quantile.survfit <-  function(x,
                               ...,
                               q=c(25,50,75),
-                              showCI=TRUE,
+                              CI=TRUE,
                               alpha=0.05,
                               ci=c("log", "lin", "asr")){
     if(!inherits(x, "survfit")) stop("Only applies to class 'survfit'")
-    dt1 <- data.table::data.table(strata=summary(x)$strata,
-                                  t=summary(x)$time,
-                                  n=summary(x)$n.risk,
-                                  e=summary(x)$n.event,
-                                  s=summary(x)$surv)
+    dt1 <- data.table(strata=summary(x)$strata,
+                     t=summary(x)$time,
+                     n=summary(x)$n.risk,
+                     e=summary(x)$n.event,
+                     s=summary(x)$surv)
 ### express as percentage
     p1 <- q / 100
 ### find time corresponding to quantile
@@ -144,7 +144,7 @@ quantile.survfit <-  function(x,
     for (i in seq(s1)){
         res1[[i]] <- data.table(q = q,
                                 t = t1)
-        if(showCI){
+        if(CI){
 ### ### ### get ranges for confidence interval
             matZ1 <- as.matrix(switch(ci,
                                       log = sapply(p1, .findLog, dt=dt1[strata==s1[i], ]),
@@ -157,7 +157,7 @@ quantile.survfit <-  function(x,
                             dt=dt1[strata==s1[i], ])]
         }
     }
-    data.table::setattr(res1, "ci", ci)
+    setattr(res1, "ci", ci)
     return(res1)
 }
 ##'
@@ -172,14 +172,14 @@ quantile.survfit <-  function(x,
 ##' 
 quantile.coxph <- function(x, ...,
                            q=c(25,50,75),
-                           showCI=TRUE,
+                           CI=TRUE,
                            alpha=0.05,
                            ci=c("log", "lin", "asr")){
     stopifnot(inherits(x, "coxph")) 
     f1 <- deparse(x$call)
     f1 <- sub("coxph", "survfit", f1)
     s1 <- eval(parse(text=f1))
-    quantile(s1, q=q, showCI=showCI, alpha=alpha, ci=ci)
+    quantile(s1, q=q, CI=CI, alpha=alpha, ci=ci)
 }
 ##'
 ##'
@@ -202,7 +202,7 @@ median <- function(x, ...){
 ##' median(s1, CI=TRUE)
 ##' 
 median.Surv <- function(x, ...,
-                        showCI=FALSE,
+                        CI=FALSE,
                         alpha=0.05,
                         ci=c("log", "lin", "asr")) {
     if(!inherits(x, "Surv")) stop("Only applies to Surv objects")
@@ -222,25 +222,26 @@ median.Surv <- function(x, ...,
 ##' b1 <- bmt[bmt$group==1, ] # ALL patients
 ##' s1 <- survfit(Surv(t2, d3)~ group, data=bmt)
 ##' median(s1)
-##' median(s1, ci="asr", showCI=TRUE)
+##' median(s1, ci="asr", CI=TRUE)
 ##'
 median.survfit <- function(x, ...,
-                           showCI=FALSE,
+                           CI=FALSE,
                            alpha=0.05,
                            ci=c("log", "lin", "asr")) {
     if(!inherits(x, "survfit")) stop("Only applies to survfit objects")
-### shortcut here!
-### read printout of survival:::print.survfit(x)
-    if (!showCI) {
-        m1 <- read.table(textConnection(capture.output(x)),
-                         skip=2, header=TRUE)
-### get medians (drop -> prevent loss of rownames)
-        res1 <- data.table::data.table(t=m1[ ,"median"],
-                                       s=rownames(m1))
-        return(res1)
-    }
     ci <- match.arg(ci)
-    quantile.survfit(x, showCI=showCI, q=50, alpha=alpha, ci=ci)
+    quantile.survfit(x, CI=CI, q=50, alpha=alpha, ci=ci)
+    ## or can use shortcut here for most use cases
+    ## read printout of survival:::print.survfit(x)
+    ##     if (!CI) {
+    ##         m1 <- read.table(textConnection(capture.output(x)),
+    ##                          skip=2, header=TRUE)
+    ##  get medians (drop -> prevent loss of rownames)
+    ##         res1 <- data.table(t=m1[ ,"median"],
+    ##                            s=rownames(m1))
+    ##         return(res1)
+    ##     }
+
 }
 ##'
 ##' @rdname quantile
@@ -252,14 +253,14 @@ median.survfit <- function(x, ...,
 ##' c1 <- coxph(Surv(t2, d3) ~ group, data=bmt)
 ##' median(c1)
 median.coxph <- function(x, ...,
-                         showCI=FALSE,
+                         CI=FALSE,
                          alpha=0.05,
                          ci=c("log","lin","asr")) {
     f1 <- deparse(x$call)
     f1 <- sub("coxph", "survfit", f1)
     s1 <- eval(parse(text=f1))
     ci <- match.arg(ci)
-    median.survfit(s1, showCI=showCI, alpha=alpha, ci=ci)
+    median.survfit(s1, CI=CI, alpha=alpha, ci=ci)
 }
 ###
 ###----------------------------------------
@@ -326,4 +327,4 @@ median.coxph <- function(x, ...,
 ###----------------------------------------
 ###
 ### for R CMD check
-    s <- n <- e <- sv <- u <- l <- strata <- NULL
+    s <- n <- e <- sv <- u <- l <- NULL

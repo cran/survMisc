@@ -12,24 +12,24 @@
 \usage{
 quantile(x, ...)
 
-\method{quantile}{Surv}(x, ..., q = c(25, 50, 75), showCI = TRUE,
+\method{quantile}{Surv}(x, ..., q = c(25, 50, 75), CI = TRUE,
   alpha = 0.05, ci = c("log", "lin", "asr"))
 
-\method{quantile}{survfit}(x, ..., q = c(25, 50, 75), showCI = TRUE,
+\method{quantile}{survfit}(x, ..., q = c(25, 50, 75), CI = TRUE,
   alpha = 0.05, ci = c("log", "lin", "asr"))
 
-\method{quantile}{coxph}(x, ..., q = c(25, 50, 75), showCI = TRUE,
+\method{quantile}{coxph}(x, ..., q = c(25, 50, 75), CI = TRUE,
   alpha = 0.05, ci = c("log", "lin", "asr"))
 
 median(x, ...)
 
-\method{median}{Surv}(x, ..., showCI = FALSE, alpha = 0.05, ci = c("log",
+\method{median}{Surv}(x, ..., CI = FALSE, alpha = 0.05, ci = c("log",
   "lin", "asr"))
 
-\method{median}{survfit}(x, ..., showCI = FALSE, alpha = 0.05,
-  ci = c("log", "lin", "asr"))
+\method{median}{survfit}(x, ..., CI = FALSE, alpha = 0.05, ci = c("log",
+  "lin", "asr"))
 
-\method{median}{coxph}(x, ..., showCI = FALSE, alpha = 0.05, ci = c("log",
+\method{median}{coxph}(x, ..., CI = FALSE, alpha = 0.05, ci = c("log",
   "lin", "asr"))
 }
 \arguments{
@@ -40,10 +40,10 @@ median(x, ...)
 \item{q}{(for \code{quantile}) Vector of quantiles
 (expressed as percentage). For the \code{median}, \code{q=50}.}
 
-\item{showCI}{Include confidence interval.
+\item{CI}{Include confidence interval.
 \cr
-Defaults are \code{showCI=TRUE} for \code{quantile} and
-\code{showCI=FALSE} for \code{median}.}
+Defaults are \code{CI=TRUE} for \code{quantile} and
+\code{CI=FALSE} for \code{median}.}
 
 \item{alpha}{Significance level \eqn{\alpha}{alpha}.}
 
@@ -57,7 +57,7 @@ A \code{data.table} (or a \code{list} of \code{data.table}s, one per stratum),
 with columns:
   \item{q}{quantile}
   \item{t}{time}
-If \code{showCI = TRUE} then upper and lower confidence
+If \code{CI = TRUE} then upper and lower confidence
 intervals, as per argument \code{ci}).
  \item{l}{lower confidence limit}
  \item{u}{upper confidence limit}
@@ -65,7 +65,7 @@ For \code{median}:
 A \code{data.table} with columns:
   \item{t}{time}
   \item{s}{stratum}
-If \code{showCI = TRUE} then a \code{list} of
+If \code{CI = TRUE} then a \code{list} of
 \code{data.table}s, one per stratum, as above.
 }
 \description{
@@ -101,7 +101,7 @@ b1 <- bmt[bmt$group==3, ] # AML high-risk patients
 s1 <- Surv(time=b1$t2, event=b1$d3)
 quantile(s1)
 ###
-s1 <- survfit(Surv(t2, d3)~ group, data=bmt)
+s1 <- survfit(Surv(t2, d3) ~ group, data=bmt)
 quantile(s1)
 c1 <- coxph(Surv(t2, d3)~ group, data=bmt)
 quantile(c1)
@@ -113,7 +113,7 @@ data(bmt, package="KMsurv")
 b1 <- bmt[bmt$group==1, ] # ALL patients
 s1 <- survfit(Surv(t2, d3)~ group, data=bmt)
 median(s1)
-median(s1, ci="asr", showCI=TRUE)
+median(s1, ci="asr", CI=TRUE)
 c1 <- coxph(Surv(t2, d3) ~ group, data=bmt)
 median(c1)
 }

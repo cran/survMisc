@@ -24,5 +24,5 @@
 ##' @source Chambers J, Hastie T (eds). 1992.
 ##' \emph{Statistical Models in S}. pg 348.
 ##' Wadsworth and Brooks, Pacific Grove, CA.
-##'
+##' \href{http://dx.doi.org/10.1007/978-3-642-50096-1_48}{Springer (paywall)}
 NULL

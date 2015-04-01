@@ -9,7 +9,7 @@ May S, Hosmer DW 1998.
 A simplified method of calculating an overall goodness-of-fit test
 for the Cox proportional hazards model.
 \emph{Lifetime Data Analysis} \bold{4}(2):109--20.
-\href{http://link.springer.com/article/10.1023/A:1009612305785}{Springer Link (paywall)}
+\href{http://dx.doi.org/10.1023/A:1009612305785}{Springer (paywall)}
 }
 \usage{
 gof(x, ...)
@@ -119,13 +119,12 @@ May S, Hosmer DW 2004.
 A cautionary note on the use of the Gronnesby and Borgan
 goodness-of-fit test for the Cox proportional hazards model.
 \emph{Lifetime Data Analysis} \bold{10}(3):283--91.
-\href{http://link.springer.com/article/10.1023/B:LIDA.0000036393.29224.1d}{
-      Springer Link (paywall)}
+\href{http://dx.doi.org/10.1023/B:LIDA.0000036393.29224.1d}{Springer (paywall)}
 
 Changes to the \code{pbc} dataset in the example are as detailed in: \cr
 Fleming T, Harrington D 2005.
 \emph{Counting Processes and Survival Analysis}.
 New Jersey: Wiley and Sons. Chapter 4, section 4.6, pp 188.
-\href{http://books.google.com/books?isbn=111815066X}{Google Books}
+\href{http://dx.doi.org/10.1002/9781118150672}{Wiley (paywall)}
 }
 

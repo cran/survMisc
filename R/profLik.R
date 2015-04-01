@@ -8,7 +8,7 @@
 ##' @param interval Number of points over which to evaluate coefficient
 ##' @param mult Multiplier. Coefficent will be multiplied by lower and upper
 ##' value and evaluated across this range
-##' @param ... Additional parameters passed to \code{graphics::plot}.
+##' @param ... Additional parameters passed to \code{graphics::plot.default}.
 ##' 
 ##' @details
 ##' Plots of range of values for coefficient in model with log-likelihoods
@@ -92,12 +92,12 @@ profLik <- function(x,
         }
         graphics::par(oma=c(0, 0, 4, 0))
         if (i > 1) dev.new()
-        graphics::plot(beta1, llik,
-                       type="l",
-                       xlab="Values for coefficient",
-                       ylab="Model partial likelihood",
-                       main=n1[i],
-                       ...)
+        graphics::plot.default(beta1, llik,
+                               type="l",
+                               xlab="Values for coefficient",
+                               ylab="Model partial likelihood",
+                               main=n1[i],
+                               ...)
 ### ### range for confidence interval is chi-square on with 1 df
         rCI <- stats::qchisq(CI, 1)
 ### ### confidence interval (calcuate lower only)

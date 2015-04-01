@@ -81,7 +81,10 @@ Columns are:
 }
 }
 \references{
-Hosmer D, Lemeshow S,  May S 2008 \emph{Applied Survival Analysis: Regression Modeling of Time to Event Data, 2nd edition}. New York: John Wiley and Sons Inc.
+Hosmer D, Lemeshow S,  May S.
+\emph{Applied Survival Analysis: Regression Modeling of Time to Event Data, 2nd edition}.
+John Wiley and Sons Inc., New York, NY, 2008.
+\href{http://dx.doi.org/10.1002/9780470258019}{Wiley (paywall)}
 }
 \seealso{
 \code{\link{whas100}}

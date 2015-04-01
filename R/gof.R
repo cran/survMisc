@@ -103,21 +103,20 @@ gof <- function(x, ...){
 ##' A simplified method of calculating an overall goodness-of-fit test
 ##' for the Cox proportional hazards model.
 ##' \emph{Lifetime Data Analysis} \bold{4}(2):109--20.
-##' \href{http://link.springer.com/article/10.1023/A\%3A1009612305785}{Springer Link (paywall)}
+##' \href{http://dx.doi.org/10.1023/A:1009612305785}{Springer (paywall)}
 ##' @references
 ##' Default value for \eqn{G} as per: \cr
 ##' May S, Hosmer DW 2004.
 ##' A cautionary note on the use of the Gronnesby and Borgan
 ##' goodness-of-fit test for the Cox proportional hazards model.
 ##' \emph{Lifetime Data Analysis} \bold{10}(3):283--91.
-##' \href{http://link.springer.com/article/10.1023/B\%3ALIDA.0000036393.29224.1d}{
-##'       Springer Link (paywall)}
+##' \href{http://dx.doi.org/10.1023/B:LIDA.0000036393.29224.1d}{Springer (paywall)}
 ##' @references
 ##' Changes to the \code{pbc} dataset in the example are as detailed in: \cr
 ##' Fleming T, Harrington D 2005.
 ##' \emph{Counting Processes and Survival Analysis}.
 ##' New Jersey: Wiley and Sons. Chapter 4, section 4.6, pp 188.
-##' \href{http://books.google.com/books?isbn=111815066X}{Google Books}
+##' \href{http://dx.doi.org/10.1002/9781118150672}{Wiley (paywall)}
 ##'
 gof.coxph <- function(x,
                       ...,
@@ -135,13 +134,13 @@ gof.coxph <- function(x,
     q1 <- rep(1:G, unlist(lapply(s1, length)))
 ### events
     e1 <- model.frame(x)[, 1][, "status"]
-    dt2 <- data.table::data.table(n=tapply(e1[order(r1)], q1, length))
+    dt2 <- data.table(n=tapply(e1[order(r1)], q1, length))
     dt2[, e := tapply(e1[order(r1)], q1, sum)]
     m1 <- residuals(x, type="martingale")
 ### cumulative hazard = events - margtingale
     cumHaz <- e1[order(r1)] -  m1[order(r1)]
 ### no. expected
-    dt2[, exp := tapply(cumHaz, q1, sum)]
+    dt2[, exp:= tapply(cumHaz, q1, sum)]
 ### z = eerved - expected/sqrt(expected)
     dt2[, z := (e - exp) / sqrt(exp)]
 ### z-score
@@ -154,7 +153,7 @@ gof.coxph <- function(x,
     d1 <- data.table(get(d1))
     d1 <- d1[order(r1), ]
     d1[, indicG := as.factor(q1)]
-    c1 <- survival::coxph(formula=f2, data=d1)
+    c1 <- coxph(formula=f2, data=d1)
     a1 <- anova(x, c1)
 ### result
     res1 <- vector(mode="list", length=2)

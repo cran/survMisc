@@ -30,32 +30,33 @@ sig <- function(x, ...){
 ##'           The statistic is the difference in the
 ##'           likelihood ratio of the original model and that with the coefficient
 ##'           omitted.}
-##' \item{lrt}{The \bold{l}og-\bold{r}ank \bold{t}est, aka the \bold{score} test.
+##' \item{lrt}{Aka the \bold{score} test.
 ##'              \cr
 ##'              The Null hypothesis is that
 ##'              \eqn{\hat{B}=0}{B=0}.
 ##'              \cr
-##'              The statistic is caculated by refitting the model with the coefficient
+##'              The statistic is cacluated by refitting the model with the coefficient
 ##'              omitted, to generate initial values for the other \eqn{\hat{B}}{B}s.
 ##'              \cr
 ##'              It is then fitted again with all
 ##'              covariates, using these values and setting \eqn{\hat{B}=0}{B=0}.
 ##' }
 ##' All statistics are distributed as \eqn{\chi}{chi}-square, with degrees of freedom
-##' \eqn{=} number of coefficients \eqn{-1}.
+##' \eqn{=} no. of coefficients \eqn{-1}.
 ##'
 ##' 
 sig.coxph <- function(x, ...){
     if(!inherits(x, "coxph")) stop
     ("Only applies to objects of class coxph")
     l1 <- length(coefficients(x))
-    if (l1==0) stop ("No coefficients; this is an intercept-only model")
+    if (l1==0) stop
+    ("No coefficients; this is an intercept-only model")
 ### hold results
     res1 <- data.frame(matrix(0.01, nrow=l1, ncol=3))
 ### std. errors
     se1 <- sqrt(diag(x$var))
 ### p value for Wald tests
-    res1[, 1] <- 1 - pchisq((coef(x)/se1) ^ 2, 1)
+    res1[ ,1] <- 1 - pchisq((coef(x)/se1) ^ 2, 1)
 ### likelihood ratio test statistic
     LR1 <- -2 * (x$loglik[1] - x$loglik[2])
 ### get names of the coefficients from model.frame
@@ -63,8 +64,8 @@ sig.coxph <- function(x, ...){
     n1 <- colnames(model.matrix(x))
 ### if only one coefficient then will be vs intercent-only model
     if (l1==1){
-        res1[1, 2] <- 1 - stats::pchisq(LR1, 1)
-        res1[1, 3] <- 1 - stats::pchisq(x$score, 1)
+        res1[1, 2] <- 1 - pchisq(LR1, 1)
+        res1[1, 3] <- 1 - pchisq(x$score, 1)
         rownames(res1) <- n1
         colnames(res1) <- c("Wald", "LR", "score")
         return(res1)
@@ -82,12 +83,12 @@ sig.coxph <- function(x, ...){
 ### ### refit with coefficient omitted
         y1 <- model.response(model.frame(x))
         x1 <- model.matrix(x)[, -i]
-        c2 <- survival::coxph(y1 ~ x1)
+        c2 <- coxph(y1 ~ x1)
         degf2 <- findDf(c2)
         LR2 <- -2 * (c2$loglik[1] - c2$loglik[2])
         LRdiff <- LR1 - LR2
         dfDiff <- degf1 - degf2
-        pLL <- 1 - stats::pchisq(LRdiff, dfDiff)
+        pLL <- 1 - pchisq(LRdiff, dfDiff)
         res1[i, 2] <- pLL
         if(!x$n==c2$n) warning
         ("Need same no. observations to compare models; check for missing data ")
@@ -96,7 +97,7 @@ sig.coxph <- function(x, ...){
 ### ### refit with new initial coefficients
 ### ### no iterations 
         c3 <- update(x, init=c(inits1), iter=0)
-        res1[i, 3] <- stats::pchisq(c3$score, dfDiff)
+        res1[i, 3] <- pchisq(c3$score, dfDiff)
     }
     rownames(res1) <- n1
     colnames(res1) <- c("Wald", "plr", "lrt")

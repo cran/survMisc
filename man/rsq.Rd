@@ -50,7 +50,8 @@ A Note on a General Definition of the Coefficient of Determination.
 O'Quigley J, Xu R, Stare J, 2005.
 Explained randomness in proportional hazards models.
 \emph{Stat Med} \bold{24}(3):479--89.
-\href{http://www.math.ucsd.edu/~rxu/igain2.pdf}{UCSD}
+\href{http://dx.doi.org/10.1002/sim.1946}{Wiley (paywall)}
+\href{http://www.math.ucsd.edu/~rxu/igain2.pdf}{Available at UCSD}
 
 Royston P, 2006.
 Explained variation for survival models.

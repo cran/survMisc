@@ -226,7 +226,6 @@ multi.coxph <- function(x, ...,
             c2 <- combinat::hcube(rep(2L, np1))-1L
             c2 <- c2[-1, , drop=FALSE]
         } else {
-### ### ### see end of file for .allCombo
             c2 <- .allCombo(long1=np1, max1s=maxCoef)
         }
 ### ### get coefficients and likelihoods
@@ -244,7 +243,7 @@ multi.coxph <- function(x, ...,
 ###
     if (how=="evolve"){
 ### ### random sample
-        c2 <- matrix(sample(c(0, 1), size=np1 * bunch,
+        c2 <- matrix(sample(c(0, 1), size=np1*bunch,
                             replace=TRUE, prob=c(bunch, maxCoef)),
                      nrow=bunch)
 ### ### remove those with more than max. no coefficients
@@ -264,8 +263,8 @@ multi.coxph <- function(x, ...,
         scr1 <- data.table(c2)
         scr1[, "ic" := l1[[2]]]
         setkey(scr1, ic)
-        res1 <- data.table::data.table(l1[[1]])
-        data.table::setnames(res1, colnames(x1))
+        res1 <- data.table(l1[[1]])
+        setnames(res1, colnames(x1))
         res1[, "ic" := l1[[2]] ]
 ###
 ### ### main loop
@@ -281,7 +280,7 @@ multi.coxph <- function(x, ...,
                              scr1=scr1)
             c3 <- unique(c3)
 ### ### check if already fitted
-            M1 <- data.table::setkey(data.table(c3))
+            M1 <- setkey(data.table(c3))
             nao1 <- na.omit(M1[scr1, which=TRUE])
             if (length(nao1)) c3 <- c3[-nao1, ,drop=FALSE]
             l1 <- .getCoefs(c2=c3,
@@ -303,9 +302,8 @@ multi.coxph <- function(x, ...,
 ### ### add to screened set
             scr1 <- rbindlist(list(scr1, data.table(cbind(c3, l1[[2]]))))
             scr1 <- unique(scr1)
-            data.table::setkey(scr1, "ic")
-            res1 <- data.table::rbindlist(list(res1,
-                                               data.table::data.table(cbind(l1[[1]], l1[[2]]))))
+            setkey(scr1, "ic")
+            res1 <- rbindlist(list(res1, data.table(cbind(l1[[1]], l1[[2]]))))
             res1 <- unique(res1)
             if (report){
                 print(paste("Best model:",
@@ -325,10 +323,10 @@ multi.coxph <- function(x, ...,
         }
     }
 ### get relative evidence weights
-    .getRelEvW <- function(ic, bestIc){ exp( - (ic - bestIc / 2)) }
+    .getRelEvW <- function(ic, bestIc) exp(-(ic - bestIc)/2)
     rew1 <- sapply(res1[, ic], .getRelEvW, bestIc=min(res1[, ic]))
-    res1[, "weight" := rew1 / sum(rew1)]
-    data.table::setkey(res1, ic)
+    res1[, "weight" := rew1/sum(rew1)]
+    setkey(res1, ic)
     if (dim(res1)[1] > confSetSize) res1 <- res1[1:confSetSize, ]
     class(res1) <- c("multi.coxph", "data.table", "data.frame")
     attr(res1, "crit") <- crit
@@ -408,7 +406,7 @@ multi.coxph <- function(x, ...,
 ### new immigrants
     ni1 <- as.integer(immRate * dim(t1)[1])
     t1[(dim(t1)[1]-ni1):dim(t1)[1], ] <- sample.int(2,
-                                              size=np1 * (ni1 + 1),
+                                              size=np1*(ni1+1),
                                               replace=TRUE)-1
 ### asexual
 ### sample from existing with probability relative to IC
@@ -417,10 +415,10 @@ multi.coxph <- function(x, ...,
                         size=n1, prob=(1/scr1[, ic]), replace=TRUE)[, (-np1-1)]
 ### mutations
     f1 <- function(x) if(x==0) 1 else 0
-    muts1 <- sample.int(length(t1), size=mutRate * length(t1))
+    muts1 <- sample.int(length(t1), size=mutRate*length(t1))
     t1[muts1] <- sapply(t1[muts1], f1)
 ### new sexual formulas
-    ns1 <- sexRate * dim(t1)[1]
+    ns1 <- sexRate*dim(t1)[1]
     t2 <- t3 <- t1[sample.int(dim(t1)[1]-ni1, size=ns1), ]
     for (i in 1:dim(t2)[1]){
 ### ### sample column then row
@@ -429,7 +427,7 @@ multi.coxph <- function(x, ...,
         t3[i, ] <- c(t2[sr1, 1:sc1], t2[sr1, (sc1+1):dim(t2)[2]])
     }
 ### with mutations
-    muts2 <- sample.int(length(t3), size=ceiling(mutRate * length(t3)))
+    muts2 <- sample.int(length(t3), size=ceiling(mutRate*length(t3)))
     t3[muts2] <- sapply(t3[muts2], f1)
     t1[(dim(t1)[1]-ni1-ns1+1):(dim(t1)[1]-ni1), ] <- t3
     return(t1)

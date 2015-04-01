@@ -61,7 +61,7 @@ temp <- seq(3, 19, 2)
 graphics::axis(1, sqrt(temp), format(temp))
 }
 \author{
-Terry Therneau, Dirk Larson. Updated from S-plus by Chris Dardis.
+Terry Therneau, Dirk Larson. Updated/adapted from S-plus by Chris Dardis.
 }
 \seealso{
 \code{\link{air}}

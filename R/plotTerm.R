@@ -30,7 +30,7 @@
 ##' @return A plot (base graphics) of the term in question.
 ##' If \code{se=TRUE},
 ##' this is done using \code{graphics::matplot} otherwise
-##' \code{graphics::plot} is used.
+##' \code{graphics::plot.default} is used.
 ##' 
 ##' @author Terry Therneau. Updated from S-plus by Chris Dardis
 ##' @examples

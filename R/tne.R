@@ -51,10 +51,7 @@
 ##' \cr \cr
 ##' Interaction terms are not currently supported by \code{survfit} objects.
 ##' @references Example using \code{kidney} data is from:
-##' Klein J, Moeschberger M 2003
-##' \emph{Survival Analysis}, 2nd edition.
-##' New York: Springer.
-##' Example 7.2, pg 210.
+##' \bold{K&M}. Example 7.2, pg 210.
 ##' 
 ##' @rdname tne
 ##' @export tne
@@ -78,15 +75,17 @@ tne <- function(x, ...){
 ##' tne(s1, eventsOnly=TRUE)
 ##'
 tne.Surv <- function(x, ..., eventsOnly=FALSE){
+### for R CHD check
+    n <- e <- status <- NULL
     if(!class(x)=="Surv") stop
     "Only applies to class 'Surv'"
     if(!attr(x, which="type")=="right") warning
     "Only applies to right censored data"
-    dt1 <- data.table::data.table(unclass(x))
+    dt1 <- data.table(unclass(x))
     dt1 <- dt1[, list(n=length(status), e=sum(status)), by=sort(time)]
     dt1 <- dt1[, "n" := c(sum(n), sum(n) - cumsum(n)[ - length(n)])]
     if(eventsOnly) dt1 <- dt1[e==1, ]
-    data.table::setnames(dt1, c("t", "n", "e"))
+    setnames(dt1, c("t", "n", "e"))
     return(dt1)
 }
 ###
@@ -127,11 +126,11 @@ tne.survfit <- function(x, ...,
     mt <- attr(mf, "terms")
     stopifnot(is.empty.model(mt)==FALSE)
 ### make data.table from model frame excluding response
-    dt1 <- data.table::data.table(mf[-1])
+    dt1 <- data.table(mf[-1])
 ### check if intercept-only model
     s1 <- attr(mt, "term.labels")
     if (length(s1)==0) {
-        dt1 <- data.table::data.table("I" = rep(1, nrow(mf)))
+        dt1 <- data.table("I" = rep(1, nrow(mf)))
     }
     return( .getTne(dt1, mf=mf, eventsOnly=eventsOnly, what=what) )
 }
@@ -171,7 +170,7 @@ tne.coxph <- function(x, ...,
         attr(mt, "intercept") <- 0
     }
 ### get model matrix
-    dt1 <- data.table::data.table(model.matrix(mt, mf, contrasts))
+    dt1 <- data.table(model.matrix(mt, mf, contrasts))
     return(.getTne(dt1, mf, eventsOnly=eventsOnly, what=what, nameStrata=nameStrata))
 }
 ###
@@ -213,7 +212,7 @@ tne.formula <- function(x, ...,
         attr(mt, "intercept") <- 0
     }
 ### get model matrix
-    dt1 <- data.table::data.table(model.matrix(mt, mf, contrasts))
+    dt1 <- data.table(model.matrix(mt, mf, contrasts))
     return( .getTne(dt1, mf, eventsOnly=eventsOnly,
                     what=what, nameStrata=nameStrata) )
 }
@@ -273,7 +272,7 @@ tne.formula <- function(x, ...,
     dt1[, "s" := as.factor(s)]
 ###
     stopifnot(attr(model.response(mf), "type")=="right")
-    y <- data.table::data.table(unclass(model.response(mf, "numeric")))
+    y <- data.table(unclass(model.response(mf, "numeric")))
     dt1[, c("t", "e") := y]
     dt1 <- dt1[order(t)]
 ### number at risk
@@ -281,8 +280,8 @@ tne.formula <- function(x, ...,
 ### number at risk per strata
     dt1[, "ns" := rev(seq(length(n))), by=s]
     nc1 <- ncol(dt1)
-    data.table::setcolorder(dt1,
-                            c(nc1-3, nc1-1, nc1-2, nc1, nc1-4, 1:(nc1-5)))
+    setcolorder(dt1,
+                c(nc1-3, nc1-1, nc1-2, nc1, nc1-4, 1:(nc1-5)))
 ###
 ###----------------------------------------
 ### table
@@ -298,9 +297,9 @@ tne.formula <- function(x, ...,
 ### ### make events - expected
         dt1[, "e_Es" := e - Es ]
         nc1 <- ncol(dt1)
-        data.table::setcolorder(dt1,
-                                c(1:3, 5, 4, nc1-1, nc1, 6:(nc1-2))
-                                )
+        setcolorder(dt1,
+                    c(1:3, 5, 4, nc1-1, nc1, 6:(nc1-2))
+                    )
         return(dt1)
     }
 ### 
@@ -359,9 +358,9 @@ tne.formula <- function(x, ...,
     m1[, n := rowSums(.SD), .SDcols = grep("n", colnames(m1))]
 ### total events per time period
     m1[, e := rowSums(.SD), .SDcols = grep("e", colnames(m1))]
-    data.table::setcolorder(m1,
-                            c(1, ncol(m1) - 1, ncol(m1), 2:(ncol(m1)-2))
-                            )
+    setcolorder(m1,
+                c(1, ncol(m1) - 1, ncol(m1), 2:(ncol(m1)-2))
+                )
 ###
     if(eventsOnly) {
         m1 <- m1[e >= 1, ]
@@ -380,6 +379,3 @@ tne.formula <- function(x, ...,
     }
     return(list(strata=s1, data=m1))
 }
-### 
-### for R CMD check
-    n <- e <- ns <- status <- NULL

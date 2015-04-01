@@ -207,11 +207,10 @@ Supremum Versions of the Log-Rank and Generalized Wilcoxon Statistics.
 \emph{J  American Statistical Association} \bold{82}(397):312--20.
 \href{http://www.jstor.org/stable/2289169}{JSTOR}
 
-Billingsly P 2009
+Billingsly P 1999
 \emph{Convergence of Probability Measures.}
 New York: John Wiley & Sons.
-\href{http://books.google.com/books/about/Convergence_of_Probability_Measures.html?id=GzjbezrsrFcC}{
-Google Books}
+\href{http://dx.doi.org/10.1002/9780470316962}{Wiley (paywall)}
 
 Examples are from
 Klein J, Moeschberger M 2003

@@ -10,7 +10,8 @@
 
 \item{l}{Length of arrow. Length is \code{l/nrow(x)}}
 
-\item{...}{Additional arguments}
+\item{...}{Additional arguments. These are passed to \code{graphics::arrows} when
+drawing right- or left-censored observations.}
 }
 \value{
 A graph (base graphics).

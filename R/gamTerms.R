@@ -58,7 +58,7 @@
 ##' temp <- seq(3, 19, 2)
 ##' graphics::axis(1, sqrt(temp), format(temp))
 ##' 
-##' @author Terry Therneau, Dirk Larson. Updated from S-plus by Chris Dardis.
+##' @author Terry Therneau, Dirk Larson. Updated/adapted from S-plus by Chris Dardis.
 gamTerms <- function(fit,
                      se=TRUE,
                      link=FALSE,

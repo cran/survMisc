@@ -202,9 +202,7 @@ ci <- function(x, ...){
 ##' \href{http://www.jstor.org/stable/2335326}{JSTOR}.
 ##' @references
 ##' Examples are from:
-##' Klein J, Moeschberger M 2003.
-##' \emph{Survival Analysis}, 2nd edition.
-##' New York: Springer.
+##' \bold{K&M}.
 ##' Section 4.4, pg 111.
 ##' @seealso \code{\link{sf}}
 ##' @seealso \code{\link{quantile}}
@@ -235,7 +233,7 @@ ci.survfit <- function(x,
     suppressWarnings(for(i in seq_along(t1)){
         attr(t1[[i]], ".data.table.locked") <-  FALSE
         t1[[i]] <- t1[[i]][, list(max(n), sum(e)), by=t]
-        data.table::setnames(t1[[i]], c("t", "n", "e"))
+        setnames(t1[[i]], c("t", "n", "e"))
         add1 <- c("s", "sv", "sigSq")
         t1[[i]][, add1] <- NA
         t1[[i]][, "s" := sf(n=n, e=e, what="s")]

@@ -80,45 +80,45 @@ cutp.coxph <- function(x, ...,
                        plot=FALSE){
     stopifnot(inherits(x, "coxph"))
     stopifnot(!identical(var, ""))
-### get location to evaluate variables
-### (i.e. environment if no data frame specified)
+    ## get location to evaluate variables
+    ## (i.e. environment if no data frame specified)
     v1 <- get(var, model.frame(x))
 ### check >2 levels
     stopifnot(length(unique(v1)) > 2)
 ### get original Surv object
-    s1 <- survival::Surv(unclass(model.frame(x)[, 1]))
+    s1 <- Surv(unclass(model.frame(x)[, 1]))
 ### need [, 1:2] to remove extra column of all 1's which Surv adds
-    s1 <- survival::Surv(s1[,1], s1[,2])
+    s1 <- Surv(s1[,1], s1[,2])
 ### time, no. events, no. at risk, where deaths occur
     t1 <- tne(s1, onlyEvents=TRUE)
     class(t1) <- "data.frame"
 ### now check subsets (one for each unique value of variable)
-### R1 holds results
+### R1 hold results
     R1 <- cbind(sort(unique(v1)),  NA)
 ### get log-rank statistic U for each variable
     R1 [, 2] <- sapply(1:nrow(R1), function (j) {
-        s2 <- survival::Surv(s1[, "time"][v1 >= R1[j, 1]], s1[, "status"][v1 >= R1[j, 1]])
+        s2 <- Surv(s1[, "time"][v1 >= R1[j, 1]], s1[, "status"][v1 >= R1[j, 1]])
         t2 <- rbind(c(0, 0, 0), as.data.frame(tne(s2)))
-###  ### fill in first row
+###  fill in first row
         t2[1, ] <- c(0, max(t2$n), 0)
-### ### hold results
+### hold results
         r1 <- rep(0, length=nrow(t1))
-### ### loop is easier to read than apply here
-### ### want to get n and e for each value of time in t1
+### loop is easier to read than apply here
+### want to get n and e for each value of time in t1
         for (i in 1:nrow(t1)){
-### ### if time matches, get n
+### if time matches, get n
             n1 <- if ( t1$t[i] %in% t2$t ) {
                 n1 <- t2$n[which(t2$t == t1$t[i])]
-### ### if time after max t in t2 then is zero
+### if time after max t in t2 then is zero
             } else if( t1$t[i] > max(t2$t) ) {
                 n1 <- 0
-### ### ### ### otherwise get n from:
-### ### ### ### n at last preceding time - e at last preceding time
+### otherwise get n from:
+### n at last preceding time - e at last preceding time
             } else {
                 n1 <- tail(t2$n[t2$t < t1$t[i]], 1) - tail(t2$e[t2$t < t1$t[i]], 1)
             }
-### ### ### if time matches, match no. events from t2,
-### ### ### otherwise is zero
+### if time matches, match no. events from t2,
+### otherwise is zero
             e1 <- ifelse(t1$t[i] %in% t2$t, t2$e[which(t2$t == t1$t[i])], 0)
             r1[i] <- e1 - n1*(t1$e[i]/t1$n[i])
         }
@@ -131,20 +131,20 @@ cutp.coxph <- function(x, ...,
 ###
     findSigma <- function(D){
         (1/(D-1)) * sum(sapply(1:D,
-### i in 1:D
+                               ## i in 1:D
                                function(i)
-### j in 1:i
-                               (1 - sum( sapply(1:i,
+                               ## j in 1:i
+                               (1 - sum( sapply( 1:i,
                                                 function(j)
-                                                1 / (D + 1 - j) ) )) ^2
+                                                1/(D+1-j) ) )) ^2
                                )
                         )
     }
     s2 <- findSigma(sum(t1$e))
-    Q1 <- cut1[2] / (sqrt(s2) * sqrt(sum(t1$e) - 1))
+    Q1 <- cut1[2] / ( sqrt(s2)*sqrt(sum(t1$e)-1) )
 ###
     findP <- function(q, acc){
-### ### acc = accuracy; should be to Inf but generally 1e3 is enough
+        ## acc = accuracy; should be to Inf but generally 1e3 is enough
         2 * sum(sapply(1:acc, function (j)
                        (-1)^(j+1)* exp(-2*j^2*q^2)
                        )

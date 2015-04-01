@@ -33,7 +33,8 @@
 ##' and \bold{bmi} which is \code{numeric}.
 ##' @source \href{http://www.mmnt.net/db/0/0/ftp.wiley.com/public/sci_tech_med/survival}{Wiley FTP}.
 ##' @references Hosmer D, Lemeshow S,  May S.
-##' Applied Survival Analysis: Regression Modeling of Time to Event Data,
-##' 2nd edition. John Wiley and Sons Inc., New York, NY, 2008.
+##' \emph{Applied Survival Analysis: Regression Modeling of Time to Event Data, 2nd edition}.
+##' John Wiley and Sons Inc., New York, NY, 2008.
+##' \href{http://dx.doi.org/10.1002/9780470258019}{Wiley (paywall)}
 ##'
 NULL

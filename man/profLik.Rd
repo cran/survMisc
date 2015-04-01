@@ -15,7 +15,7 @@ profLik(x, CI = 0.95, interval = 50, mult = c(0.1, 2), ...)
 \item{mult}{Multiplier. Coefficent will be multiplied by lower and upper
 value and evaluated across this range}
 
-\item{...}{Additional parameters passed to \code{graphics::plot}.}
+\item{...}{Additional parameters passed to \code{graphics::plot.default}.}
 }
 \value{
 One plot for each coefficient in the model.

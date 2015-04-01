@@ -91,10 +91,7 @@ locScore <- function(x, ...){
 ##' locScore(c1, hypo=c(0, 0, 0, 1))
 ##' locScore(coxph(Surv(time, delta) ~ stage + age, data=larynx))
 ##' @references Examples are from:
-##' Klein J, Moeschberger M 2003
-##' \emph{Survival Analysis}, 2nd edition.
-##' New York: Springer.
-##' Example 8.2, pp 264-6.
+##' \bold{K&M} Example 8.2, pp 264-6.
 locScore.coxph <- function(x,
                            ...,
                            all=FALSE,
@@ -168,17 +165,17 @@ locScore.coxph <- function(x,
 ### get names of coefficients
     n1 <- names(x$coefficients)
 ### copy to modify (drop terms later)
-    dt2 <- data.table::copy(DT)
+    dt2 <- copy(DT)
     n2 <- n1[as.logical(hypo)]
     cn1 <- seq_along(colnames(dt2))
 ### get position of columns not in hypothesis
     i1 <- as.integer(cn1[!colnames(dt2) %in% n2])
 ### drop these unused columns
-    data.table::set(dt2, j=i1, value=NULL)
+    set(dt2, j=i1, value=NULL)
     stopifnot(attr(model.response(mFrame), "type")=="right")
-    y1 <- data.table::data.table(unclass(model.response(mFrame, "numeric")))
+    y1 <- data.table(unclass(model.response(mFrame, "numeric")))
     dt2[, c("t", "e") := y1]
-    coef1 <- survival::coxph(Surv(t, e) ~ ., ties=ties, data=dt2)$coefficients
+    coef1 <- coxph(Surv(t, e) ~ ., ties=ties, data=dt2)$coefficients
 ### add to results
     init1 <- as.vector(hypo)
     init1[hypo==1] <- coef1
@@ -197,13 +194,13 @@ locScore.coxph <- function(x,
     sc1 <- colSums(survival::coxph.detail(cox1)$score)
 ### results
 ###  init1 <- formatC(init1)
-    r1 <- data.table::data.table(t(init1))
-    data.table::setnames(r1, n1)
-    r2 <- data.table::data.table(t(hypo),
-                                 sc1 %*% cox1$var %*% sc1,
-                                 sum(hypo)
-                                 )
-    data.table::setnames(r2, c(n1, "chiSq", "df"))
+    r1 <- data.table(t(init1))
+    setnames(r1, n1)
+    r2 <- data.table(t(hypo),
+                     sc1 %*% cox1$var %*% sc1,
+                     sum(hypo)
+                     )
+    setnames(r2, c(n1, "chiSq", "df"))
     r2[, "pVal" := (1-stats::pchisq(chiSq, df))]
 ###
     return(list(coef=r1,
@@ -297,25 +294,25 @@ locLR.coxph <- function(x, ...,
 ### for R CMD check
     chiSq <- n1 <- NULL
 ### copy to modify (drop terms later)
-    dt2 <- data.table::copy(DT)
+    dt2 <- copy(DT)
     n1 <- names(x$coefficients)
     n2 <- n1[as.logical(hypo)]
     cn1 <- seq_along(colnames(dt2))
     i1 <- as.integer(cn1[!colnames(dt2) %in% n2])
-    data.table::set(dt2, j=i1, value=NULL)
+    set(dt2, j=i1, value=NULL)
     stopifnot(attr(model.response(mFrame), "type")=="right")
-    y1 <- data.table::data.table(unclass(model.response(mFrame, "numeric")))
+    y1 <- data.table(unclass(model.response(mFrame, "numeric")))
     dt2[, c("t", "e") := y1]
 ### refit with only those coefficients
     lr2 <- survival::coxph(Surv(t, e) ~ .,
                            data=dt2,
                            ties=ties
                            )$loglik[2]
-    r1 <- data.table::data.table(t(hypo),
-                                 2 * (lr - lr2),
-                                 sum(!hypo)
-                                 )
-    data.table::setnames(r1, c(n1, "chiSq", "df"))
+    r1 <- data.table(t(hypo),
+                     2 * (lr - lr2),
+                     sum(!hypo)
+                     )
+    setnames(r1, c(n1, "chiSq", "df"))
     r1[, "pVal" := (1-stats::pchisq(chiSq, df))]
     return(r1)
 }
@@ -367,7 +364,7 @@ locWald.coxph <- function(x, ...,
 ### swap 1s with 0s to show which coefficients have been preserved
 ### i.e. keep those which are thought to be ==0
 ### w1 - holds results
-    w1 <- data.table::data.table(1-c2)
+    w1 <- data.table(1-c2)
     w1[, c("chiSq", "df", "pVal") := 0.1]
 ###
     for (i in seq(nrow(c2))){
@@ -388,10 +385,10 @@ locWald.coxph <- function(x, ...,
     pos1 <- which(hypo==1)
     chi1 <- x$coefficients[pos1] %*% solve(x$var[pos1, pos1]) %*%  x$coefficients[pos1]
     df1 <- sum(hypo)
-    r1 <- data.table::data.table(t(hypo),
-                                 chi1,
-                                 df1)
-    data.table::setnames(r1, c(n1, "chiSq", "df"))
+    r1 <- data.table(t(hypo),
+                     chi1,
+                     df1)
+    setnames(r1, c(n1, "chiSq", "df"))
     r1[, "pVal" := (1-stats::pchisq(chiSq, df))]
     return(r1)
 }

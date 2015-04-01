@@ -78,10 +78,10 @@ The variable is highly skewed.}
 }
 }
 \references{
-The Multicenter Postinfarction Research Group. 1983.
-\emph{Risk stratification and survival after myocardial infarction.}
-N Engl J Med. 309(6):331-6.
-\href{http://www.nejm.org/doi/full/10.1056/NEJM198308113090602}{NEJM}
+The Multicenter Postinfarction Research Group 1983.
+Risk stratification and survival after myocardial infarction.
+\emph{N Engl J Med}. \bold{309}(6):331-6.
+\href{http://dx.doi.org/10.1056/NEJM198308113090602}{NEJM (paywall)}
 }
 \seealso{
 \code{\link{plotTerm}}

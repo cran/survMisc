@@ -125,10 +125,7 @@ locWald(c1, hypo=c(0, 0, 0, 1))
 }
 \references{
 Examples are from:
-Klein J, Moeschberger M 2003
-\emph{Survival Analysis}, 2nd edition.
-New York: Springer.
-Example 8.2, pp 264-6.
+\bold{K&M} Example 8.2, pp 264-6.
 }
 \keyword{htest}
 

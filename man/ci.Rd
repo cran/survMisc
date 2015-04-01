@@ -219,9 +219,7 @@ Confidence bands for a survival curve from censored data.
 \href{http://www.jstor.org/stable/2335326}{JSTOR}.
 
 Examples are from:
-Klein J, Moeschberger M 2003.
-\emph{Survival Analysis}, 2nd edition.
-New York: Springer.
+\bold{K&M}.
 Section 4.4, pg 111.
 }
 \seealso{
