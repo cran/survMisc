@@ -50,15 +50,16 @@
 #' @keywords package
 #' @concept survival
 #' 
-#' @importFrom graphics plot grid title arrows segments points
+#' @importFrom graphics plot abline arrows grid mtext points title segments
 #' @importFrom grDevices dev.new graphics.off
 #' @importFrom utils head tail combn data packageVersion
-#' @importFrom stats formula as.formula terms is.empty.model model.matrix model.response printCoefmat predict runif pchisq pnorm qnorm anova
+#' @importFrom stats anova formula as.formula is.empty.model model.frame model.matrix model.response printCoefmat predict runif pchisq pnorm qchisq qnorm terms update
 #' 
 #' @import knitr
 #' @import survival
 #' @import ggplot2
 #' 
+## the following are imported for their datasets:
 #' @import KMsurv
 #' @import km.ci
 #' 
@@ -68,6 +69,5 @@
 #' @importFrom gridExtra grid.arrange
 #' 
 NULL
-## the following are imported for their datasets:
 ## KMsurv
 ## km.ci

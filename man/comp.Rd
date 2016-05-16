@@ -130,7 +130,7 @@ where both groups have at least one subject at risk.
 \cr \cr
 Then calculate:
 \deqn{ Q = \frac{ \sup{|Z(t)|}}{\sigma(\tau)}, \quad t<\tau }{
-Q = sup( |Z(t)| ) / sigma(tau), t<tau}
+       Q = sup( |Z(t)| ) / sigma(tau), t < tau}
 When the null hypothesis is true,
 the distribution of \eqn{Q} is approximately
  \deqn{Q \sim \sup{|B(x)|, \quad 0 \leq x \leq 1}}{
@@ -139,7 +139,7 @@ And for a standard Brownian motion (Wiener) process:
  \deqn{Pr[\sup|B(t)|>x] = 1 - \frac{4}{\pi}
                           \sum_{k=0}^{\infty}
                           \frac{(- 1)^k}{2k + 1} \exp{\frac{-\pi^2(2k + 1)^2}{8x^2}}}{
-       Pr[sup|B(t)|>x] = 1 - 4/pi sum((-1)^k / (2 * k + 1) * exp(-pi^2 (2k + 1)^2 / x^2))}
+       Pr[sup|B(t)| > x] = 1 - 4 / pi sum((-1)^k / (2 * k + 1) * exp(-pi^2 (2k + 1)^2 / x^2))}
 \bold{Tests for trend} are designed to detect ordered differences in survival curves.
 \cr
 That is, for at least one group:
@@ -188,6 +188,9 @@ Stratified models (\code{stratTen}) are \emph{not} yet supported.
 }
 \examples{
 ## Two covariate groups
+data("leukemia", package="survival")
+f1 <- survfit(Surv(time, status) ~ x, data=leukemia)
+comp(ten(f1))
 ## K&M 2nd ed. Example 7.2, Table 7.2, pp 209--210.
 data("kidney", package="KMsurv")
 t1 <- ten(Surv(time=time, event=delta) ~ type, data=kidney)
