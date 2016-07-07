@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{NEWS file for the survMisc package}
 
+\section{7/6/16: Version 0.5.3}{
+  \itemize{
+    \item Corrected error in \code{sf}. Thanks to Walton Jones for
+  bringing this to my attention. 
+    \item Added some \code{xtable} methods applicable to survival data.
+  }
+}
+
 \section{5/16/16: Version 0.5.2}{
   \itemize{
     \item Corrected error in \code{comp} when comparing two groups. This was
@@ -11,7 +19,9 @@
 
 \section{5/11/16: Version 0.5.1}{
   \itemize{
-    \item Have included \code{profLik} function from version 0.4.6 again.
+    \item Have included \code{profLik} function from version 0.4.6
+    again.
+    
     \item Re-named the vignette.
   }
 }

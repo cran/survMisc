@@ -214,8 +214,8 @@ ten(Surv(time=t2, event=d3) ~ z3*z10, data=bmt)
 ## impractical long names stored as an attribute
 attr(t1, "longNames")
 ## not typically intended to be called directly
-mf1 <- model.frame(Surv(time, status==2) ~ age + strata(edema) + strata(spiders), pbc,
-                   drop.unused.levels = TRUE)
+mf1 <- stats::model.frame(Surv(time, status==2) ~ age + strata(edema) + strata(spiders), pbc,
+                          drop.unused.levels = TRUE)
 ten(mf1)
 }
 \seealso{

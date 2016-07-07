@@ -67,6 +67,7 @@
 #' @importFrom zoo na.locf.default
 #' @importFrom grid unit.pmax
 #' @importFrom gridExtra grid.arrange
+#' @importFrom xtable xtable print.xtable
 #' 
 NULL
 ## KMsurv
