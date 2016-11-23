@@ -93,16 +93,19 @@ COV <- function(x, ...) UseMethod("COV")
 #' @examples
 #' ## Two covariate groups
 #' ## K&M. Example 7.2, pg 210, table 7.2 (last column).
+#' \dontrun{
 #' data("kidney", package="KMsurv")
 #' k1 <- with(kidney,
 #'            ten(Surv(time=time, event=delta) ~ type))
 #' COV(k1)[COV(k1) > 0]
+#' }
 #' ## Four covariate groups
 #' ## K&M. Example 7.6, pg 217.
+#' \dontrun{
 #' data("larynx", package="KMsurv")
 #' l1 <- ten(Surv(time, delta) ~ stage, data=larynx)
 #' rowSums(COV(l1), dims=2)
-#' 
+#' }
 COV.ten <- function(x, ..., reCalc=FALSE) {
     if (!reCalc & !is.null(attr(x, "COV"))) return (attr(x, "COV"))
     ## no. of groups
@@ -177,10 +180,11 @@ COV.stratTen <- function(x, ..., reCalc=FALSE){
 #' ## example of numeric method
 #' ## Three covariate groups
 #' ## K&M. Example 7.4, pg 212.
+#' \dontrun{
 #' data("bmt", package="KMsurv")
 #' b1 <- asWide(ten(Surv(time=t2, event=d3) ~ group, data=bmt))
 #' rowSums(b1[, COV(x=e, n=n, ncg=matrix(data=c(n_1, n_2, n_3), ncol=3))], dims=2)
-#' 
+#' }
 COV.numeric <- function(x, ..., n, ncg){
   stopifnot(all(sapply(list(x, n, ncg), is.numeric)))
   ## ensure all same length

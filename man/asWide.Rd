@@ -47,11 +47,15 @@ Convert an object to "wide" or "long" form.
 Most methods for \code{ten} objects are designed for the 'long' form.
 }
 \examples{
+\dontrun{
 data("bmt", package="KMsurv")
 require("survival")
 t1 <- ten(c1 <- coxph(Surv(t2, d3) ~ z3*z10, data=bmt))
 asWide(t1)
+}
+\dontrun{
 asLong(asWide(t1))
 stopifnot(asLong(asWide(t1)) == ten(ten(t1)))
+}
 }
 

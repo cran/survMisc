@@ -1,6 +1,12 @@
 \name{NEWS}
 \title{NEWS file for the survMisc package}
 
+\section{11/22/16: Version 0.5.4}{
+  \itemize{
+    \item Minor update to take account of the release of \code{package:ggplot2 2.2.0}.
+  }
+}
+
 \section{7/6/16: Version 0.5.3}{
   \itemize{
     \item Corrected error in \code{sf}. Thanks to Walton Jones for
@@ -21,7 +27,6 @@
   \itemize{
     \item Have included \code{profLik} function from version 0.4.6
     again.
-    
     \item Re-named the vignette.
   }
 }
@@ -35,7 +40,7 @@
   
   \item A number of functions and datasets have been left out temporarily for this release
   in order to focus on the 'core' package elements. These will be added
-  back in due course.
+  back in due course, most likely version 0.6.0.
   
   \item
    \describe{
