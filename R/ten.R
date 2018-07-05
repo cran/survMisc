@@ -1,5 +1,6 @@
 #' @name ten
 #' @title \bold{t}ime, \bold{e}vent(s) and \bold{n}umber at risk.
+#' @description \bold{t}ime, \bold{e}vent(s) and \bold{n}umber at risk.
 #'
 #' @include print.R
 #' @include asWide.R

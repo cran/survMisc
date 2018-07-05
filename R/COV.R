@@ -1,6 +1,7 @@
 #' @name COV
 #' @title \bold{cov}ariance matrix for survival data
-#'
+#' @description \bold{cov}ariance matrix for survival data
+#' 
 #' @include ten.R
 #' @include print.R
 #' @include asWide.R

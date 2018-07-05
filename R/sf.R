@@ -1,6 +1,8 @@
 #' @name sf
 #' @title \bold{s}urvival (or hazard) \bold{f}unction
 #' based on \eqn{e} and \eqn{n}.
+#' @description \bold{s}urvival (or hazard) \bold{f}unction
+#' based on \eqn{e} and \eqn{n}.
 #'
 #' @include ten.R
 #'

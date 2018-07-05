@@ -26,13 +26,6 @@ opts_chunk$set(eval=TRUE,
 ### Set R options
 options(formatR.arrow=TRUE, width=60)
 
-## ----p1---------------------------------------------------
-library("survMisc")
-df0 <- data.frame(t1=c(0, 2, 4, 6, NA, NA, 12, 14),
-                  t2=c(NA, NA, 4, 6, 8, 10, 16, 18))
-s1 <- Surv(df0$t1, df0$t2, type="interval2")
-plot(s1, l=2)
-
 ## ----p2---------------------------------------------------
 data("kidney", package="KMsurv")
 t1 <- ten(survfit(Surv(time, delta) ~ type, data=kidney))

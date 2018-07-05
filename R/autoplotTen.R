@@ -1,5 +1,6 @@
 #' @name autoplotTen
 #' @title Generate a \code{ggplot} for a \code{survfit} or \code{ten} object
+#' @description Generate a \code{ggplot} for a \code{survfit} or \code{ten} object
 #'  
 #' @include ten.R
 #' @include print.R

@@ -1,6 +1,16 @@
 \name{NEWS}
 \title{NEWS file for the survMisc package}
 
+\section{07/03/18: Version 0.5.5}{
+  \itemize{
+    \item Removing \code{plot} method for \code{Surv} objects, so as to
+  avoid overwriting the new \code{plot.Surv} method in
+  \code{package:survival}.
+   \item A substantial revision to this package in planned in the months
+  ahead and is planned to occur with version 0.6.0.
+  }
+}
+
 \section{11/22/16: Version 0.5.4}{
   \itemize{
     \item Minor update to take account of the release of \code{package:ggplot2 2.2.0}.

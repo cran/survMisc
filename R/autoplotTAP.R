@@ -1,5 +1,6 @@
 #' @name autoplotTableAndPlot
 #' @title Arrange a survival plot with corresponding table and legend.
+#' @description Arrange a survival plot with corresponding table and legend.
 #' 
 #' @include autoplotTen.R
 #' 

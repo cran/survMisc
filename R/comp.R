@@ -1,5 +1,6 @@
 #' @name comp
 #' @title compare survival curves
+#' @description compare survival curves
 #' 
 #' @include ten.R
 #' @include asWide.R
@@ -176,23 +177,23 @@ comp <- function(x, ...) UseMethod("comp")
 #' A Generalized Wilcoxon Test for Comparing Arbitrarily
 #' Singly-Censored Samples.
 #' Biometrika 1965 Jun. 52(1/2):203--23.
-#' \href{http://www.jstor.org/stable/2333825}{JSTOR}
+#' \samp{http://www.jstor.org/stable/2333825} JSTOR
 #' @references Tarone RE, Ware J 1977
 #' On Distribution-Free Tests for Equality of Survival Distributions.
 #' \emph{Biometrika};\bold{64}(1):156--60.
-#' \href{http://www.jstor.org/stable/2335790}{JSTOR}
+#' \samp{http://www.jstor.org/stable/2335790} JSTOR
 #' @references Peto R, Peto J 1972
 #' Asymptotically Efficient Rank Invariant Test Procedures.
 #' \emph{J Royal Statistical Society} \bold{135}(2):186--207.
-#' \href{http://www.jstor.org/stable/2344317}{JSTOR}
+#' \samp{http://www.jstor.org/stable/2344317} JSTOR
 #' @references Fleming TR, Harrington DP, O'Sullivan M 1987
 #' Supremum Versions of the Log-Rank and Generalized Wilcoxon Statistics.
 #' \emph{J  American Statistical Association} \bold{82}(397):312--20.
-#' \href{http://www.jstor.org/stable/2289169}{JSTOR}
+#' \samp{http://www.jstor.org/stable/2289169} JSTOR
 #' @references Billingsly P 1999
 #' \emph{Convergence of Probability Measures.}
 #' New York: John Wiley & Sons.
-#' \href{http://dx.doi.org/10.1002/9780470316962}{Wiley (paywall)}
+#' \samp{http://dx.doi.org/10.1002/9780470316962} Wiley (paywall)
 #' 
 #' @examples
 #' ## Two covariate groups

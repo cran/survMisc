@@ -1,6 +1,6 @@
 #' @name asWide
 #' @title Convert an object to "wide" or "long" form.
-#'
+#' @description Convert an object to "wide" or "long" form.
 #' @include ten.R
 #' @include nc.R
 #' @include print.R

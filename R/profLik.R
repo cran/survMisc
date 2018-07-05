@@ -1,5 +1,6 @@
 #' @name profLik
 #' @title Profile likelihood for coefficients in a \code{coxph} model
+#' @description Profile likelihood for coefficients in a \code{coxph} model
 #' 
 #' @param x A \code{coxph} model.
 #' @param CI \bold{C}onfidence \bold{I}nterval.

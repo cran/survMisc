@@ -1,5 +1,6 @@
 #' @name xtable
 #' @title \code{xtable} methods
+#' @description \code{xtable} methods
 #'
 #' @param x
 #' An object with an xtable method.
