@@ -5,8 +5,7 @@
 \alias{autoplot.tableAndPlot}
 \title{Arrange a survival plot with corresponding table and legend.}
 \usage{
-\method{autoplot}{tableAndPlot}(object, ..., hideTabLeg = TRUE,
-  tabHeight = 0.25)
+\method{autoplot}{tableAndPlot}(object, ..., hideTabLeg = TRUE, tabHeight = 0.25)
 }
 \arguments{
 \item{object}{An object of class \code{"tableAndPlot"}, as returned by

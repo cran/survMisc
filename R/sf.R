@@ -10,8 +10,8 @@
 #'  \describe{
 #'   \item{default}{A numeric vector of events status (assumed sorted by time).}
 #'   \item{numeric}{Vectors of events and numbers at risk (assumed sorted by time).}
-#'   \item{}{A \code{ten} object.}
-#'   \item{}{A \code{stratTen} object.}
+#'   \item{ten}{A \code{ten} object.}
+#'   \item{stratTen}{A \code{stratTen} object.}
 #' }
 #' @param ... Additional arguments (not implemented).
 #' @param n Number at risk.

@@ -11,13 +11,26 @@ The function is loosely based on \code{km.ci::km.ci}.
 \usage{
 ci(x, ...)
 
-\method{ci}{ten}(x, ..., CI = c("0.95", "0.9", "0.99"), how = c("point",
-  "nair", "hall"), trans = c("log", "lin", "asi"), tL = NULL, tU = NULL,
-  reCalc = FALSE)
+\method{ci}{ten}(
+  x,
+  ...,
+  CI = c("0.95", "0.9", "0.99"),
+  how = c("point", "nair", "hall"),
+  trans = c("log", "lin", "asi"),
+  tL = NULL,
+  tU = NULL,
+  reCalc = FALSE
+)
 
-\method{ci}{stratTen}(x, ..., CI = c("0.95", "0.9", "0.99"),
-  how = c("point", "nair", "hall"), trans = c("log", "lin", "asi"),
-  tL = NULL, tU = NULL)
+\method{ci}{stratTen}(
+  x,
+  ...,
+  CI = c("0.95", "0.9", "0.99"),
+  how = c("point", "nair", "hall"),
+  trans = c("log", "lin", "asi"),
+  tL = NULL,
+  tU = NULL
+)
 }
 \arguments{
 \item{x}{An object of class \code{ten}.}

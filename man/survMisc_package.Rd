@@ -4,7 +4,6 @@
 \name{survMisc_package}
 \alias{survMisc_package}
 \alias{survMisc}
-\alias{survMisc_package-package}
 \title{Miscellaneous Functions for Survival Analysis}
 \description{
 Miscellaneous Functions for Survival Analysis
@@ -28,11 +27,11 @@ There are references in many of the functions to the textbooks:
  \bold{K&M} \tab Klein J, Moeschberger M (2003). 
                  \emph{Survival Analysis}, 2nd edition. \cr
             \tab New York: Springer. 
-                 \href{http://dx.doi.org/10.1007/b97377}{Springer (paywall)}. \cr
+                 \doi{10.1007/b97377} \cr
  \bold{T&G} \tab Therneau TM, Grambsch PM (2000). 
                  \emph{Modeling Survival Data: Extending the Cox Model}. \cr
             \tab New York: Springer. 
-                 \href{http://dx.doi.org/10.1007/978-1-4757-3294-8}{Springer (paywall)}.
+                 \doi{10.1007/978-1-4757-3294-8}
 }
 
 \subsection{Notes for developers}{
@@ -53,7 +52,5 @@ Otherwise email me at the address below.
 \author{
 Chris Dardis \email{christopherdardis@gmail.com}
 }
-\concept{
-survival
-}
+\concept{survival}
 \keyword{package}

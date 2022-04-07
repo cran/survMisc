@@ -6,18 +6,36 @@
 \alias{xtable.survfit}
 \title{\code{xtable} methods}
 \usage{
-xtable(x, caption = NULL, label = NULL, align = NULL, digits = NULL,
-  display = NULL, ...)
+xtable(
+  x,
+  caption = NULL,
+  label = NULL,
+  align = NULL,
+  digits = NULL,
+  display = NULL,
+  ...
+)
 
-\method{xtable}{table}(x, caption = paste0(paste(names(dimnames(x)), collapse
-  = " $\\\\times$ "), "\\\\\\\\ chi-sq=",
-  signif(suppressWarnings(stats::chisq.test(x)$p.value), digits)),
-  label = NULL, align = c("l", rep("c", dim(x)[2])), digits = 2,
-  display = NULL, ...)
+\method{xtable}{table}(
+  x,
+  caption = paste0(paste(names(dimnames(x)), collapse = " $\\\\times$ "),
+    "\\\\\\\\ chi-sq=", signif(suppressWarnings(stats::chisq.test(x)$p.value), digits)),
+  label = NULL,
+  align = c("l", rep("c", dim(x)[2])),
+  digits = 2,
+  display = NULL,
+  ...
+)
 
-\method{xtable}{survfit}(x, caption = paste0("Survival for ",
-  deparse(x$call[[2]])), label = NULL, align = c("l", rep("c", 7)),
-  digits = NULL, display = rep("fg", 8), ...)
+\method{xtable}{survfit}(
+  x,
+  caption = paste0("Survival for ", deparse(x$call[[2]])),
+  label = NULL,
+  align = c("l", rep("c", 7)),
+  digits = NULL,
+  display = rep("fg", 8),
+  ...
+)
 }
 \arguments{
 \item{x}{An object with an xtable method.}

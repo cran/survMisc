@@ -1,7 +1,7 @@
 Package: survMisc
 Type: Package
-Version: 0.5.5
-Date: 2018-07-03
+Version: 0.5.6
+Date: 2022-04-07
 Depends: survival
 Imports: graphics, grDevices, stats, utils, knitr, KMsurv, ggplot2,
         data.table, zoo, grid, gridExtra, km.ci, xtable
@@ -20,7 +20,7 @@ Collate: 'ten.R' 'nc.R' 'sf.R' 'ci.R' 'autoplotTAP.R' 'autoplotTen.R'
         'gastric.R' 'gof.R' 'onAttach.R' 'profLik.R' 'rsq.R'
         'survMisc_package.R' 'xtable.R'
 NeedsCompilation: no
-RoxygenNote: 6.0.1
-Packaged: 2018-07-04 04:09:30 UTC; d
+RoxygenNote: 7.1.2
+Packaged: 2022-04-07 15:42:53 UTC; cd
 Repository: CRAN
-Date/Publication: 2018-07-05 04:30:03 UTC
+Date/Publication: 2022-04-07 16:10:02 UTC

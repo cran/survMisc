@@ -10,43 +10,111 @@
 \usage{
 autoplot(object, ...)
 
-\method{autoplot}{ten}(object, ..., title = "Marks show times with censoring",
-  type = c("single", "CI", "fill"), alpha = 0.05, ciLine = 10,
-  censShape = 3, palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1",
-  "Pastel2", "Set1", "Set3"), jitter = c("none", "noEvents", "all"),
-  tabTitle = "Number at risk by time", xLab = "Time",
-  timeTicks = c("major", "minor", "days", "months", "custom"), times = NULL,
-  yLab = "Survival", yScale = c("perc", "frac"), legend = TRUE,
-  legTitle = "Group", legLabs = NULL, legOrd = NULL, titleSize = 15,
-  axisTitleSize = 15, axisLabSize = 10, survLineSize = 0.5,
-  censSize = 5, legTitleSize = 10, legLabSize = 10, fillLineSize = 0.05,
-  tabTitleSize = 15, tabLabSize = 5, nRiskSize = 5)
+\method{autoplot}{ten}(
+  object,
+  ...,
+  title = "Marks show times with censoring",
+  type = c("single", "CI", "fill"),
+  alpha = 0.05,
+  ciLine = 10,
+  censShape = 3,
+  palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set3"),
+  jitter = c("none", "noEvents", "all"),
+  tabTitle = "Number at risk by time",
+  xLab = "Time",
+  timeTicks = c("major", "minor", "days", "months", "custom"),
+  times = NULL,
+  yLab = "Survival",
+  yScale = c("perc", "frac"),
+  legend = TRUE,
+  legTitle = "Group",
+  legLabs = NULL,
+  legOrd = NULL,
+  titleSize = 15,
+  axisTitleSize = 15,
+  axisLabSize = 10,
+  survLineSize = 0.5,
+  censSize = 5,
+  legTitleSize = 10,
+  legLabSize = 10,
+  fillLineSize = 0.05,
+  tabTitleSize = 15,
+  tabLabSize = 5,
+  nRiskSize = 5
+)
 
-\method{autoplot}{stratTen}(object, ..., title = NULL, type = c("single",
-  "CI", "fill"), alpha = 0.05, ciLine = 10, censShape = 3,
-  palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1", "Pastel2",
-  "Set1", "Set3"), jitter = c("none", "noEvents", "all"),
-  tabTitle = "Number at risk by time", xLab = "Time",
-  timeTicks = c("major", "minor", "days", "months", "custom"), times = NULL,
-  yLab = "Survival", yScale = c("perc", "frac"), legend = TRUE,
-  legTitle = "Group", legLabs = NULL, legOrd = NULL, titleSize = 15,
-  axisTitleSize = 15, axisLabSize = 10, survLineSize = 0.5,
-  censSize = 5, legTitleSize = 10, legLabSize = 10, fillLineSize = 0.05,
-  tabTitleSize = 15, tabLabSize = 5, nRiskSize = 5)
+\method{autoplot}{stratTen}(
+  object,
+  ...,
+  title = NULL,
+  type = c("single", "CI", "fill"),
+  alpha = 0.05,
+  ciLine = 10,
+  censShape = 3,
+  palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set3"),
+  jitter = c("none", "noEvents", "all"),
+  tabTitle = "Number at risk by time",
+  xLab = "Time",
+  timeTicks = c("major", "minor", "days", "months", "custom"),
+  times = NULL,
+  yLab = "Survival",
+  yScale = c("perc", "frac"),
+  legend = TRUE,
+  legTitle = "Group",
+  legLabs = NULL,
+  legOrd = NULL,
+  titleSize = 15,
+  axisTitleSize = 15,
+  axisLabSize = 10,
+  survLineSize = 0.5,
+  censSize = 5,
+  legTitleSize = 10,
+  legLabSize = 10,
+  fillLineSize = 0.05,
+  tabTitleSize = 15,
+  tabLabSize = 5,
+  nRiskSize = 5
+)
 
-\method{autoplot}{survfit}(object, ...,
-  title = "Marks show times with censoring", type = c("single", "CI",
-  "fill"), alpha = 0.05, ciLine = 10, censShape = 3,
-  palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1", "Pastel2",
-  "Set1", "Set3"), jitter = c("none", "noEvents", "all"),
-  tabTitle = "Number at risk by time", xLab = "Time",
+\method{autoplot}{survfit}(
+  object,
+  ...,
+  title = "Marks show times with censoring",
+  type = c("single", "CI", "fill"),
+  alpha = 0.05,
+  ciLine = 10,
+  censShape = 3,
+  palette = c("Dark2", "Set2", "Accent", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set3"),
+  jitter = c("none", "noEvents", "all"),
+  tabTitle = "Number at risk by time",
+  xLab = "Time",
   timeTicks = c("major", "minor", "weeks", "months", "custom"),
-  times = NULL, yLab = "Survival", yScale = c("perc", "frac"),
-  legend = TRUE, legLabs = NULL, legOrd = NULL, legTitle = "Group",
-  titleSize = 15, axisTitleSize = 15, axisLabSize = 10,
-  survLineSize = 0.5, censSize = 5, legTitleSize = 10, legLabSize = 10,
-  fillLineSize = 0.05, tabTitleSize = 15, tabLabSize = 5, nRiskSize = 5,
-  pVal = FALSE, sigP = 1, pX = 0.1, pY = 0.1)
+  times = NULL,
+  yLab = "Survival",
+  yScale = c("perc", "frac"),
+  legend = TRUE,
+  legLabs = NULL,
+  legOrd = NULL,
+  legTitle = "Group",
+  titleSize = 15,
+  axisTitleSize = 15,
+  axisLabSize = 10,
+  survLineSize = 0.5,
+  censSize = 5,
+  legTitleSize = 10,
+  legLabSize = 10,
+  fillLineSize = 0.05,
+  tabTitleSize = 15,
+  tabLabSize = 5,
+  nRiskSize = 5,
+  pVal = FALSE,
+  sigP = 1,
+  pX = 0.1,
+  pY = 0.1
+)
 }
 \arguments{
 \item{object}{An object of class \code{survfit}, \code{ten} or \code{stratTen}.}
@@ -86,7 +154,7 @@ Use \code{censShape=10} for circular marks. See
 ?graphics::points}
 
 \item{palette}{Options are taken from
-\href{http://colorbrewer2.org/}{color_brewer}.
+\href{https://colorbrewer2.org/}{color_brewer}.
   \itemize{
     \item \code{palette="Dark2"} (the default) is recommended for
           \code{single} or \code{CI} plots.
@@ -210,7 +278,7 @@ autoplot(t1, type="fill", survLineSize=2, jitter="all")
 autoplot(t1, timeTicks="months", 
  type="CI", jitter="all",
  legLabs=c("surgical", "percutaneous"),
- title="Time to infection following catheter placement \\n
+ title="Time to infection following catheter placement \n
    by type of catheter, for dialysis patients",
  titleSize=10, censSize=2)$plot
 t2 <- ten(survfit(Surv(time=time, event=delta) ~ 1, data=kidney))
@@ -242,7 +310,7 @@ s1 <- survfit(Surv(time, delta) ~ type, data=kidney)
 autoplot(s1, type="fill", survLineSize=2)
 autoplot(s1, type="CI", pVal=TRUE, pX=0.3,
  legLabs=c("surgical", "percutaneous"),
- title="Time to infection following catheter placement \\n
+ title="Time to infection following catheter placement \n
    by type of catheter, for dialysis patients")$plot
 s1 <- survfit(Surv(time=time, event=delta) ~ 1, data=kidney)
 autoplot(s1, legLabs="")$plot

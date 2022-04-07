@@ -4,7 +4,9 @@
 \name{gastric}
 \alias{gastric}
 \title{gastric cancer trial data}
-\format{A \code{data.frame} with \eqn{90} rows (observations) and \eqn{3} columns (variables).}
+\format{
+A \code{data.frame} with \eqn{90} rows (observations) and \eqn{3} columns (variables).
+}
 \source{
 Klein J, Moeschberger. Survival Analysis, 2nd edition. Springer 2003.
 Example 7.9, pg 224.

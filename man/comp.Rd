@@ -7,8 +7,7 @@
 \usage{
 comp(x, ...)
 
-\method{comp}{ten}(x, ..., p = 1, q = 1, scores = seq.int(attr(x, "ncg")),
-  reCalc = FALSE)
+\method{comp}{ten}(x, ..., p = 1, q = 1, scores = seq.int(attr(x, "ncg")), reCalc = FALSE)
 }
 \arguments{
 \item{x}{A \code{tne} object}

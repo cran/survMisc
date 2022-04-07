@@ -10,11 +10,16 @@
 \alias{print.stratTableAndPlot}
 \title{\code{print} methods}
 \usage{
-\method{print}{ten}(x, ..., maxRow = getOption("datatable.print.nrows", 50L),
-  nRowP = getOption("datatable.print.topn", 5L), pRowNames = TRUE,
+\method{print}{ten}(
+  x,
+  ...,
+  maxRow = getOption("datatable.print.nrows", 50L),
+  nRowP = getOption("datatable.print.topn", 5L),
+  pRowNames = TRUE,
   maxCol = getOption("survMisc.maxCol", 8L),
   nColSP = getOption("survMisc.nColSP", 7L),
-  sigDig = getOption("survMisc.sigDig", 2L))
+  sigDig = getOption("survMisc.sigDig", 2L)
+)
 
 \method{print}{COV}(x, ..., n = 2L)
 
@@ -24,8 +29,7 @@
 
 \method{print}{tableAndPlot}(x, ..., hideTabLeg = TRUE, tabHeight = 0.25)
 
-\method{print}{stratTableAndPlot}(x, ..., hideTabLeg = TRUE,
-  tabHeight = 0.25)
+\method{print}{stratTableAndPlot}(x, ..., hideTabLeg = TRUE, tabHeight = 0.25)
 }
 \arguments{
 \item{x}{An object of class \code{ten}.}

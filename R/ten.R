@@ -139,7 +139,7 @@ ten <- function(x, ...) UseMethod("ten")
 #' ten(c(1, 0, 1, 0, 1))
 #'
 ten.numeric <- function(x, ...){
-  stopifnot(all(x >= 0 && x <=1))
+  stopifnot(all(x >= 0 & x <=1))
   res1 <- data.table::data.table(
     "t"=(t <- seq_along(x)),
     "n"=rev(t),
@@ -203,7 +203,7 @@ ten.Surv <- function(x, ...,
 #'                                    c("score", "wtime")],
 #'                        "Z1", "Z2"))
 #' c1 <- coxph(Surv(time=time, event=delta) ~ Z1 + Z2,
-#'             data=hodg[gtype==1 && dtype==1, ])
+#'             data=hodg[gtype==1 & dtype==1, ])
 #' ten(c1)
 #' data("bmt", package="KMsurv")
 #' ten(c1 <- coxph(Surv(t2, d3) ~ z3*z10, data=bmt))

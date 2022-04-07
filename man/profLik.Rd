@@ -4,8 +4,7 @@
 \alias{profLik}
 \title{Profile likelihood for coefficients in a \code{coxph} model}
 \usage{
-profLik(x, CI = 0.95, interval = 50, mult = c(0.1, 2), devNew = TRUE,
-  ...)
+profLik(x, CI = 0.95, interval = 50, mult = c(0.1, 2), devNew = TRUE, ...)
 }
 \arguments{
 \item{x}{A \code{coxph} model.}

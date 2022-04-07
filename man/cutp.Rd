@@ -126,12 +126,10 @@ Contal C, O'Quigley J, 1999.
 An application of changepoint methods in studying the
 effect of age on survival in breast cancer.
 \emph{Computational Statistics & Data Analysis} \bold{30}(3):253--70.
-\href{http://dx.doi.org/10.1016/S0167-9473(98)00096-6}{
-      ScienceDirect (paywall)}
+\doi{10.1016/S0167-9473(98)00096-6}
 
 Mandrekar JN, Mandrekar, SJ, Cha SS, 2003.
 Cutpoint Determination Methods in Survival Analysis using SAS.
 \emph{Proceedings of the 28th SAS Users Group International Conference (SUGI)}. Paper 261-28.
-\href{http://www2.sas.com/proceedings/sugi28/261-28.pdf}{
-      SAS (free)}
+\href{https://support.sas.com/resources/papers/proceedings/proceedings/sugi28/261-28.pdf}{SAS (free)}
 }

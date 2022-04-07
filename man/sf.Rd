@@ -12,25 +12,28 @@ based on \eqn{e} and \eqn{n}.}
 \usage{
 sf(x, ...)
 
-\method{sf}{default}(x, ..., what = c("S", "H"), SCV = FALSE,
-  times = NULL)
+\method{sf}{default}(x, ..., what = c("S", "H"), SCV = FALSE, times = NULL)
 
-\method{sf}{ten}(x, ..., what = c("S", "H"), SCV = FALSE, times = NULL,
-  reCalc = FALSE)
+\method{sf}{ten}(x, ..., what = c("S", "H"), SCV = FALSE, times = NULL, reCalc = FALSE)
 
-\method{sf}{stratTen}(x, ..., what = c("S", "H"), SCV = FALSE,
-  times = NULL, reCalc = FALSE)
+\method{sf}{stratTen}(x, ..., what = c("S", "H"), SCV = FALSE, times = NULL, reCalc = FALSE)
 
-\method{sf}{numeric}(x, ..., n = NULL, what = c("all", "S", "Sv", "H",
-  "Hv"), SCV = FALSE, times = NULL)
+\method{sf}{numeric}(
+  x,
+  ...,
+  n = NULL,
+  what = c("all", "S", "Sv", "H", "Hv"),
+  SCV = FALSE,
+  times = NULL
+)
 }
 \arguments{
 \item{x}{One of the following:
  \describe{
   \item{default}{A numeric vector of events status (assumed sorted by time).}
   \item{numeric}{Vectors of events and numbers at risk (assumed sorted by time).}
-  \item{}{A \code{ten} object.}
-  \item{}{A \code{stratTen} object.}
+  \item{ten}{A \code{ten} object.}
+  \item{stratTen}{A \code{stratTen} object.}
 }}
 
 \item{...}{Additional arguments (not implemented).}

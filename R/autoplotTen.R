@@ -39,7 +39,7 @@
 #'  \cr
 #' ?graphics::points
 #' @param palette Options are taken from
-#' \href{http://colorbrewer2.org/}{color_brewer}.
+#' \href{https://colorbrewer2.org/}{color_brewer}.
 #'   \itemize{
 #'     \item \code{palette="Dark2"} (the default) is recommended for
 #'           \code{single} or \code{CI} plots.

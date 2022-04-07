@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{NEWS file for the survMisc package}
 
+\section{07/03/18: Version 0.5.6}{
+  \itemize{
+    \item Minor correction to reflect change in behavior of '&' operator
+  with new release of R.
+   \item A substantial revision to this package in still planned to occur with version 0.6.0.
+  }
+}
+
 \section{07/03/18: Version 0.5.5}{
   \itemize{
     \item Removing \code{plot} method for \code{Surv} objects, so as to

@@ -24,8 +24,7 @@ ten(x, ...)
 
 \method{ten}{formula}(x, ..., abbNames = TRUE, contrasts.arg = NULL)
 
-\method{ten}{data.frame}(x, ..., abbNames = TRUE, contrasts.arg = NULL,
-  call = NULL)
+\method{ten}{data.frame}(x, ..., abbNames = TRUE, contrasts.arg = NULL, call = NULL)
 
 \method{ten}{data.table}(x, ..., abbNames = TRUE, mm = NULL, call = NULL)
 
@@ -177,7 +176,7 @@ data.table::setnames(hodg,
                                    c("score", "wtime")],
                        "Z1", "Z2"))
 c1 <- coxph(Surv(time=time, event=delta) ~ Z1 + Z2,
-            data=hodg[gtype==1 && dtype==1, ])
+            data=hodg[gtype==1 & dtype==1, ])
 ten(c1)
 data("bmt", package="KMsurv")
 ten(c1 <- coxph(Surv(t2, d3) ~ z3*z10, data=bmt))
